@@ -10,19 +10,11 @@ public class Stack07 {
     }
 
     public boolean isEmpty() {
-        if (top == -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return (top == -1);
     }
 
     public boolean isFull() {
-        if (top == size -1) {
-            return true;
-        } else {
-            return false;
-        }
+        return (top == size - 1);
     }
 
     public void push(Pakaian07 pkn) {
@@ -46,55 +38,52 @@ public class Stack07 {
     }
 
     public void peek() {
-        System.out.println("Elemen Teratas: " + data[top].jenis + " " + data[top].warna
-        + " " + data[top].merk + " " + data[top].ukuran + " " + data[top].harga);
+        if (!isEmpty()) {
+            System.out.println("Elemen Teratas: " + data[top].jenis + " " + data[top].warna
+            + " " + data[top].merk + " " + data[top].ukuran + " " + data[top].harga);
+        } else {
+            System.out.println("Stack Masih Kosong");
+        }
     }
 
     public void print() {
-        System.out.println("Isi Stack: ");
-        for (int i = top; i>= 0; i--) {
-            System.out.println(data[i].jenis + " " + data[i].warna + " " 
-            + data[i].merk + " " + data[i].ukuran + " " + data[i].harga + " ");
+        if (!isEmpty()) {
+            System.out.println("Isi Stack: ");
+            for (int i = top; i >= 0; i--) {
+                System.out.println(data[i].jenis + " " + data[i].warna + " " 
+                + data[i].merk + " " + data[i].ukuran + " " + data[i].harga + " ");
+            }
+            System.out.println("");
+        } else {
+            System.out.println("Stack Masih Kosong");
         }
-        System.out.println("");
     }
 
     public void clear() {
         if (!isEmpty()) {
-            for (int i = top; i >= 0; i--) {
-                top--;
-            }
-        System.out.println("Stack Sudah Dikosongan");
-    } else {
-        System.out.println("Stack Masih Kosong");
+            top = -1;
+            System.out.println("Stack Sudah Dikosongkan");
+        } else {
+            System.out.println("Stack Masih Kosong");
+        }
     }
-
     public void getMax() {
         if (!isEmpty()) {
+            double maxPrice = data[0].harga;
             Pakaian07 maxPakaian = data[0];
-    
             for (int i = 1; i <= top; i++) {
-                if (data[i].harga > maxPakaian.harga) {
+                if (data[i].harga > maxPrice) {
+                    maxPrice = data[i].harga;
                     maxPakaian = data[i];
                 }
             }
-    
-            System.out.println("Data Pakaian dengan Harga Tertinggi:");
-            System.out.println("Jenis: " + maxPakaian.jenis);
-            System.out.println("Warna: " + maxPakaian.warna);
-            System.out.println("Merk: " + maxPakaian.merk);
-            System.out.println("Ukuran: " + maxPakaian.ukuran);
-            System.out.println("Harga: " + maxPakaian.harga);
+            System.out.println("Pakaian dengan Harga Tertinggi:");
+            System.out.println(maxPakaian.jenis + " " + maxPakaian.warna
+                    + " " + maxPakaian.merk + " " + maxPakaian.ukuran + " " + maxPakaian.harga);
         } else {
-            System.out.println("Stack Kosong, Tidak Ada Data Pakaian");
+            System.out.println("Stack Masih Kosong");
         }
-    
-    
-   
-
-
+    }
 
 
 }
-}
-
